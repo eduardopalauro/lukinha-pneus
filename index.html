@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lukinha Pneus</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #111;
+      color: #fff;
+    }
+
+    header {
+      background: #000;
+      text-align: center;
+      padding: 30px 20px;
+      border-bottom: 3px solid #e00000;
+    }
+
+    header h1 {
+      font-size: 34px;
+      letter-spacing: 1px;
+    }
+
+    header h1 span {
+      color: #e00000;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #ccc;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    .search-box {
+      margin-bottom: 30px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      font-size: 17px;
+      outline: none;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      color: #111;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,.35);
+    }
+
+    .card img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .measure {
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .price {
+      margin-top: 12px;
+      color: #d90000;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    .price small {
+      font-size: 15px;
+      color: #555;
+      font-weight: normal;
+    }
+
+    .whatsapp {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      background: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 15px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .whatsapp:hover {
+      filter: brightness(.9);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 28px;
+      }
+
+      .card img {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>LUKINHA <span>PNEUS</span></h1>
+    <p>Encontre o pneu ideal para o seu veículo</p>
+  </header>
+
+  <main class="container">
+
+    <div class="search-box">
+      <input
+        type="text"
+        id="search"
+        placeholder="Digite a medida, ex: 175/70 R14"
+        onkeyup="filterProducts()"
+      >
+    </div>
+
+    <section class="grid" id="products">
+
+      <article class="card" data-name="175/70 r14">
+        <img
+          src="pneu-175-70-r14.jpg"
+          alt="Pneu 175/70 R14"
+        >
+
+        <div class="card-content">
+          <div class="measure">175/70 R14</div>
+
+          <div class="price">
+            R$ 150,00
+            <small>/ unidade</small>
+          </div>
+
+          <a
+            class="whatsapp"
+            target="_blank"
+            href="https://wa.me/5543988163284?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20pneu%20175%2F70%20R14%20de%20R%24%20150%2C00."
+          >
+            Pedir pelo WhatsApp
+          </a>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer>
+    Lukinha Pneus
+  </footer>
+
+  <script>
+    function filterProducts() {
+      const search = document.getElementById('search').value.toLowerCase();
+      const products = document.querySelectorAll('.card');
+
+      products.forEach(product => {
+        const name = product.getAttribute('data-name');
+
+        if (name.includes(search)) {
+          product.style.display = 'block';
+        } else {
+          product.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
